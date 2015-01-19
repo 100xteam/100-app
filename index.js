@@ -4,6 +4,7 @@ module.exports = function(config){
 	var njax = require('njax-app');
 	var app = njax(config);
 	app.sdk = require('100-sdk')(_.clone(config));
+	require('./lib')(app);
 
 	if(!app.njax){
 		app.njax = {};
