@@ -1,0 +1,10 @@
+{"name": "100-app", "version": "0.0.1", "private": true, "scripts": {
+	"start": "node app.js"
+}, "dependencies": {
+	"async": "*",
+	"underscore": "*",
+	"mkdirp": "*",
+	"less": "*",
+	"njax-app": "git+ssh://git@github.com:schematical/njax-app.git#master",
+	"100-sdk": "git+ssh://git@github.com:schematical/100-sdk.git#master"
+}}
