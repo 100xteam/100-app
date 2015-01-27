@@ -6,5 +6,5 @@
 	"mkdirp": "*",
 	"less": "*",
 	"njax-app": "git+ssh://git@github.com:schematical/njax-app.git#master",
-	"100-sdk": "git+ssh://git@github.com:schematical/100-sdk.git#master"
+	"100-sdk": "git+ssh://git@github.com:100xteam/100-sdk.git#master"
 }}
