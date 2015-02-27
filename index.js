@@ -1,5 +1,7 @@
 //var async = require('async');
 var _ = require('underscore');
+var path = require('path');
+
 module.exports = function(config){
 	var njax = require('njax-app');
 	var app = njax(config);
@@ -20,8 +22,9 @@ module.exports = function(config){
 	app.locals.partials._meta_angular = '_meta_angular';
 
 	var _start = _.bind(app.start, app);
+	app.njax.addTemplateDir(path.join(__dirname, 'public', 'templates'));
 	app.start = _.bind(function(cb){
-		//app.njax.addTemplateDir(path.join(__dirname, 'public', 'templates'));
+		//
 		_start(cb);
 	}, app);
 	return app;
