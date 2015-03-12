@@ -5,7 +5,10 @@ var path = require('path');
 module.exports = function(config){
 	var njax = require('njax-app');
 	var app = njax(config);
-	app.sdk = require('100-sdk')(_.clone(config));
+
+	app.njax.sdk_constructor =  require('100-sdk');
+	app.sdk = app.njax.sdk_constructor(_.clone(config));
+
 	require('./lib')(app);
 
 	if(!app.njax){
