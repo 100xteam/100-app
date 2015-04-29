@@ -1,0 +1,48 @@
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-inline">
+                    <!-- <li><a href="//{{ location_friendly_url }}" class="">Townsquare</a></li> -->
+                    <li>
+                        <a href="//{{ location_friendly_url }}" class=""><i class="ts-logo"></i><span class='ts-name'><span>town</span>square</span></a>
+                    </li>
+                    <li><small>© 2015</small></li>
+                    <li><small><a href="https://docs.google.com/document/d/1CrtNLJG8Fudz1D8XHDWg7RylQC3YEsXg-_9d77VlFWI/pub" target="_blank">Privacy Policy</a></small></li>
+                    <li><small><a href="https://docs.google.com/document/d/1JdaYVySGAD7_vTa7_qZEk29rtT7BS0j1cLMSg7-upiU/pub" target="_blank">Terms of Service</a></small></li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-right">
+                <ul class="list-inline">
+                    <li><small><a href="mailto:support@100xteam.com" target="_blank">Questions?</a></small></li>
+                    {{# user }}
+                    <li><small><a href="{{ core_www_url }}/logout">Logout</a></small></li>
+                    {{/ user }}
+                    {{^ user }}
+                    <li><small><a href="{{ core_www_url }}/login{{# redirect_url }}?redirect={{ redirect_url }}{{/ redirect_url }}">Login</a></small></li>
+                    {{/ user }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    window.doorbellOptions = {
+        onShow: function() {
+            if(njax_bootstrap.user) doorbell.setProperty('Name', njax_bootstrap.user.name);
+            if(njax_bootstrap._location) doorbell.setProperty('Location', njax_bootstrap._location.name);
+            if(njax_bootstrap.req) doorbell.setProperty('Page', njax_bootstrap.req.path);
+            // Email is only set on profile page, need a way to get it everywhere
+            if(njax_bootstrap.user_email){
+                console.log("email hit")
+                doorbell.setOption('email', njax_bootstrap.user_email);
+                doorbell.setOption('hideEmail', true);   
+            }
+        },
+        appKey: 'CTqZKOWkw9mqEoI4n8qsc5WoEUt2I83ezBrYBjXc8I1mk3k15DGWtbWwhHOinMTd'
+    };
+    (function(d, t) {
+        var g = d.createElement(t);g.id = 'doorbellScript';g.type = 'text/javascript';g.async = true;g.src = 'https://doorbell.io/button/882';(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(g);
+    }(document, 'script'));
+</script>
