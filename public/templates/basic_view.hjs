@@ -1,0 +1,106 @@
+{{> _header }}
+{{> _navbar }}
+
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-avatar">
+                    <img src="{{sub_focus.cropped_img_s3.url}}"  class="img-rounded img-responsive">
+                </div>
+                <div class="sub-header-avatar">
+                    <img src="{{focus.cropped_img_s3.url}}"  class="img-rounded img-responsive">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h1 class="pull-left">
+                    <a href="//{{ focus.url }}">
+                        {{focus.name}}
+                    </a>
+                </h1>
+                {{^ _hide_sub_focus_title }}
+                <div class="pull-left visible-sm visible-xs">
+                    <h3>
+                        <a href="//{{ sub_focus.url }}">
+                            {{sub_focus.name}}
+                        </a>
+                    </h3>
+                </div>
+                {{/ _hide_sub_focus_title}}
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="sub-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-md-offset-3">
+                <div role="tabpanel">
+                    <ul class="nav nav-pills" role="tablist" core-tabs>
+                            {{# primary_tabs }}
+
+                                <li role="presentation">
+                                    {{# is_relative_link}}
+                                    <a href="//{{ focus.url }}{{ url }}" tab-namespace="{{ namespace }}">
+                                        {{ tab_name }}
+                                    </a>
+                                    {{/ is_relative_link}}
+                                    {{# is_external_link}}
+                                        <a href="{{ url }}"  tab-namespace="{{ namespace }}">
+                                            {{ tab_name }}
+                                        </a>
+                                    {{/is_external_link}}
+                                    {{# is_tab}}
+                                        <a href="//{{ focus.url }}/tab/{{ application }}/{{ namespace }}" tab-namespace="{{ namespace }}">
+                                            {{ tab_name }}
+                                        </a>
+                                    {{/is_tab}}
+                                </li>
+
+                            {{/primary_tabs}}
+                            {{# has_secondary_tabs }}
+                            <li>
+                                <a  role="presentation" class=" dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    More<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    {{# secondary_tabs }}
+                                        <li >
+                                            {{# is_relative_link}}
+                                                <a href="//{{ focus.url }}{{ url }}" tab-namespace="{{ namespace }}">
+                                                    {{ tab_name }}
+                                                </a>
+                                            {{/ is_relative_link}}
+                                            {{# is_external_link}}
+                                                <a href="{{ url }}"  tab-namespace="{{ namespace }}">
+                                                    {{ tab_name }}
+                                                </a>
+                                            {{/is_external_link}}
+                                            {{# is_tab}}
+                                                <a href="//{{ focus.url }}/tab/{{ application }}/{{ namespace }}" tab-namespace="{{ namespace }}">
+                                                    {{ tab_name }}
+                                                </a>
+                                            {{/is_tab}}
+                                        </li>
+                                    {{/ secondary_tabs }}
+                                </ul>
+                            </li>
+                            {{/ has_secondary_tabs}}
+
+
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{> _main_partial }}
+
+{{> _100_footer }}
+{{> _footer }}
