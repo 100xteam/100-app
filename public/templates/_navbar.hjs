@@ -12,56 +12,73 @@
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            {{# user_profile }}
-                {{# location }}
+
+
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <span ng-bind="(_location.name + ' ') || 'My Communities '"></span>
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                {{# user_profiles_multiple }}
+                        {{# default_user_profile }}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <span ng-bind="(_location.name + ' ') || 'My Communities '"></span>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
 
                                     {{# user_profiles}}
                                         <li><a href="//{{ location.location_friendly_url }}">&emsp;{{ location.name }}</a></li>
                                     {{/ user_profiles }}
 
-                                {{/ user_profiles_multiple }}
-                            </ul>
-                        </li>
+
+                                </ul>
+                            </li>
+                        {{/ default_user_profile }}
+                        {{^ default_user_profile }}
+                            <li>
+                                <a href="{{ core_www_url }}/locations">
+                                    Discover
+                                </a>
+
+                            </li>
+                        {{/ default_user_profile }}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <img src="{{ user_profile.thumb_img_s3.url }}" class="img-responsive img-circle" width="36">
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                {{# user_profile }}
-                                    <li><a href="//{{ user_profile.location_friendly_url }}">My Profile</a></li>
-                                {{/ user_profile }}
-                                <li><a href="//{{ location_friendly_url }}/settings">Settings</a></li>
-                                <li class="divider"></li>
+                        {{# default_user_profile }}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <img src="{{ user_profile.thumb_img_s3.url }}" class="img-responsive img-circle" width="36">
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    {{# user_profile }}
+                                        <li><a href="//{{ user_profile.location_friendly_url }}">My Profile</a></li>
+                                    {{/ user_profile }}
+                                    <li><a href="//{{ location_friendly_url }}/settings">Settings</a></li>
+                                    <li class="divider"></li>
 
-                                {{# is_curator }}
-                                    <li><a href="{{ core_www_url }}/curators">Curator Admin</a></li>
-                                {{/ is_curator}}
-                                {{# is_admin }}
-                                {{! <li role="presentation" class="divider"></li> }}
-                                    <li><a href="{{ admin_uri }}">Super Admin</a></li>
-                                {{/ is_admin}}
+                                    {{# is_curator }}
+                                        <li><a href="{{ core_www_url }}/curators">Curator Admin</a></li>
+                                    {{/ is_curator}}
+                                    {{# is_admin }}
+                                    {{! <li role="presentation" class="divider"></li> }}
+                                        <li><a href="{{ admin_uri }}">Super Admin</a></li>
+                                    {{/ is_admin}}
 
-                                {{# user }}
-                                    <li><a href="{{ core_www_url }}/logout">Logout</a></li>
-                                {{/ user }}
-                                {{^ user }}
-                                    <li><a href="{{ core_www_url }}/login">Login</a></li>
-                                {{/ user }}
-                            </ul>
-                        </li>
+                                    {{# user }}
+                                        <li><a href="{{ core_www_url }}/logout">Logout</a></li>
+                                    {{/ user }}
+
+                                </ul>
+                            </li>
+                        {{/ default_user_profile }}
+                        {{^ default_user_profile }}
+                            <li>
+                                <a href="{{ core_www_url }}/login">
+                                    Login
+                                </a>
+
+                            </li>
+                        {{/ default_user_profile }}
                     </ul>
-                {{/ location }}
-            {{/ user_profile }}
+
+
             <div core-search search-selected="searchSelected(entity);"></div>
         </div><!--/.navbar-collapse -->
     </div>
