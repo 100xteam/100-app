@@ -1,0 +1,8 @@
+<script src="{{ core_asset_url }}/js/vendor.a8ee08b6.js?{{ uuid }}"></script>
+
+<link rel="stylesheet" href="{{ core_asset_url }}/css/vendor.6c690de4.css?{{ uuid }}">
+
+<link rel='stylesheet' type="text/css" href='{{ core_asset_url }}/css/100-core.min.68e59ef2.css?{{ uuid }}' />
+<!-- SHERADYN: Comment this out when you reconsile your new styles with the global.less-->
+<link rel='stylesheet' type="text/css" href='{{ core_asset_url }}/css/temp-style.css?{{ uuid }}' />
+<script src="{{ core_asset_url }}/js/100-core.min.3f569a6e.js?{{ uuid }}"></script>

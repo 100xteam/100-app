@@ -26,8 +26,8 @@ module.exports = app100 = {
 						}else if(locals) {
 
 							res.locals.focus = (locals.toObject && locals.toObject({ light: true })) || locals;
-						}else if(res._location || res.location){
-							var location = (res._location || res.location);
+						}else if(req._location || req.location){
+							var location = (req._location || req.location);
 							res.locals.focus = location.toObject({ light: true });
 						}else{
 							console.error("There is no focus object...");
@@ -72,8 +72,47 @@ module.exports = app100 = {
 					//IF iframe url
 					return res.render('basic_view', locals);
 				}
+				res.addTab = function(namespace, name, url, action){
+					switch(action){
+						case('relative_link'):
+						case('absolute_link'):
+						case('tab'):
+						break;
+						default:
+							throw new Error("Invalid tab action: " + action)
+					}
+					var tab = {
+						namespace:namespace,
+						tab_name:name,
+						url:url,
+						action:action
+					}
+					tab['is_' + action] = true;
+					if(!req.tabs){
+						req.tabs = [];
+					}
+					req.tabs.push(tab);
+					return tab;
+				}
+				res.setFocus = function(focus, sub_focus){
+					if(!_.isUndefined(focus) && !_.isNull(focus)){
+						if(focus.toObject){
+							res.bootstrap('focus', focus);
+						}else{
+							res.locals.focus = focus;
+						}
+					}
+					if(!_.isUndefined(sub_focus) && !_.isNull(sub_focus)){
+						if(sub_focus.toObject){
+							res.bootstrap('sub_focus', sub_focus);
+						}else{
+							res.locals.sub_focus = sub_focus;
+						}
+					}
+				}
 				return next();
 			}
+
 		]
 	},
 
@@ -100,7 +139,7 @@ module.exports = app100 = {
 		app.locals.partials._navbar = '_navbar';
 		app.locals.partials._meta = '_meta';
 		app.locals.partials._meta_angular = '_meta_angular';
-
+		app.locals.partials._core_meta = '_core_meta';
 		app.use(app100.middleware(app));
 		var _start = _.bind(app.start, app);
 
