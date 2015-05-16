@@ -44,6 +44,11 @@
                             {{# primary_tabs }}
 
                                 <li role="presentation">
+                                    {{# is_application_link}}
+                                            <a href="{{ url }}" tab-namespace="{{ namespace }}">
+                                                {{ tab_name }}
+                                            </a>
+                                    {{/ is_application_link}}
                                     {{# is_relative_link}}
                                     <a href="//{{ focus.url }}{{ url }}" tab-namespace="{{ namespace }}">
                                         {{ tab_name }}
@@ -70,6 +75,11 @@
                                 <ul class="dropdown-menu" role="menu">
                                     {{# secondary_tabs }}
                                         <li >
+                                            {{# is_application_link}}
+                                                <a href="{{ url }}" tab-namespace="{{ namespace }}">
+                                                    {{ tab_name }}
+                                                </a>
+                                            {{/ is_application_link}}
                                             {{# is_relative_link}}
                                                 <a href="//{{ focus.url }}{{ url }}" tab-namespace="{{ namespace }}">
                                                     {{ tab_name }}

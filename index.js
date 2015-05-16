@@ -53,12 +53,12 @@ module.exports = app100 = {
 					var tab_ct = 0;
 					var primary_tabs = [];
 					var secondary_tabs = [];
+					req.tabs = app.njax.routes.settings.replaceTabUrlWithLocals(req.tabs, res._bootstrap);
 					for(var i in req.tabs){
 
 						if(tab_ct < 5) {
 							primary_tabs.push(req.tabs[i]);
 						}else{
-
 							secondary_tabs.push(req.tabs[i]);
 						}
 						tab_ct += 1;
@@ -74,10 +74,13 @@ module.exports = app100 = {
 				}
 				res.addTab = function(namespace, name, url, action){
 					switch(action){
+
 						case('relative_link'):
 						case('absolute_link'):
 						case('tab'):
+							//YAY
 						break;
+						case('application_link')://THIS DOESNT EXACTLY WORK OUT SIDE THE CORE
 						default:
 							throw new Error("Invalid tab action: " + action)
 					}
