@@ -49,11 +49,11 @@
                                         {{ tab_name }}
                                     </a>
                                     {{/ is_relative_link}}
-                                    {{# is_external_link}}
+                                    {{# is_absolute_link}}
                                         <a href="{{ url }}"  tab-namespace="{{ namespace }}">
                                             {{ tab_name }}
                                         </a>
-                                    {{/is_external_link}}
+                                    {{/is_absolute_link}}
                                     {{# is_tab}}
                                         <a href="//{{ focus.url }}/tab/{{ application }}/{{ namespace }}" tab-namespace="{{ namespace }}">
                                             {{ tab_name }}
