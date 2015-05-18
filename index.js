@@ -53,7 +53,9 @@ module.exports = app100 = {
 					var tab_ct = 0;
 					var primary_tabs = [];
 					var secondary_tabs = [];
-					req.tabs = app.njax.routes.settings.replaceTabUrlWithLocals(req.tabs, res._bootstrap);
+					if(app.njax.routes.settings) {
+						req.tabs = app.njax.routes.settings.replaceTabUrlWithLocals(req.tabs, res._bootstrap);
+					}
 					for(var i in req.tabs){
 
 						if(tab_ct < 5) {
