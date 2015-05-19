@@ -79,7 +79,7 @@
                     </ul>
 
 
-            <div core-search search-selected="searchSelected(entity);"></div>
+            <div njax-search-box search-selected="searchSelected(entity);"></div>
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
