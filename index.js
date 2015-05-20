@@ -153,7 +153,7 @@ module.exports = app100 = {
 			app.njax.cache('default_location', function(cb){
 				return app.sdk.Location.findOne('default_location', function(err, location){
 					if(err) return cb(err);
-console.log('Default Location:', location);
+
 					return cb(null, location);
 				});
 			}, [/*'100innovation.location.create', '100innovation.location.update'*/], function(err){
