@@ -28,6 +28,17 @@
                     </h3>
                 </div>
                 {{/ _hide_sub_focus_title}}
+                <!--
+                    Matt says a project type should be a sub sub_focus.
+                    Until that exists just use this, which only shows project.type on project page.
+                -->
+                {{# project }}
+                <div class="pull-right">
+                    <h4 class="small">
+                            {{project.type}}
+                    </h4>
+                </div>
+                {{/ project}}
 
             </div>
         </div>
