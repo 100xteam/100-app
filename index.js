@@ -4,6 +4,15 @@ var path = require('path');
 
 module.exports = app100 = {
 	middleware:function(app){
+		app.routeAsIframe = function(){
+			return function(req, res, next){
+				console.log("BEFORE - setAsIframe");
+				res.setAsIframe();
+				return next();
+			}
+		}
+
+
 		return [
 			function(req, res, next){
 				res.render100 = function(_main_partial, locals){
@@ -115,8 +124,15 @@ module.exports = app100 = {
 						}
 					}
 				}
+				/**
+				 * Makes it so the /public/templates/basic_info.hjs doesnt render the header and footer in the iframe mode
+				 */
+				res.setAsIframe = function(){
+					res.locals._route_as_iframe = true;
+				}
 				return next();
 			}
+
 
 		]
 	},
