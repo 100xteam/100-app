@@ -6,7 +6,6 @@ module.exports = app100 = {
 	middleware:function(app){
 		app.routeAsIframe = function(){
 			return function(req, res, next){
-				console.log("BEFORE - setAsIframe");
 				res.setAsIframe();
 				return next();
 			}
@@ -19,7 +18,6 @@ module.exports = app100 = {
 					if(res.locals.iframe_url){
 						//console.log("Overwriting:" + _main_partial + ' for _iframe');
 						_main_partial = '_iframe';
-
 					}
 					if(!res.locals.partials){
 						res.locals.partials = _.extend(app.locals.partials);
@@ -44,13 +42,22 @@ module.exports = app100 = {
 					}
 
 					var location = req.location || req._location;
-					res.locals.sub_focus = location && (location.toObject && location.toObject({ dark: true })) || location || null;
-					if(!res.locals.sub_focus || (location && location.namespace == res.locals.focus.namespace && res.locals.focus._njax_type == 'Location')){
+					var sub_focus = location && (location.toObject && location.toObject({dark: true})) || location || null;
+
+					if(!sub_focus || (location && location.namespace == res.locals.focus.namespace && res.locals.focus._njax_type == 'Location')){
 						//They are the same so use the 'global' namespace
-						res.locals.sub_focus = app.njax.cache.default_location.toObject({ dark: true  });
+						sub_focus = app.njax.cache.default_location.toObject({ dark: true  });
 
 					}
-					if(res.locals.focus._njax_type == 'Location') {
+					if(!res.locals.sub_focus) {
+						res.locals.sub_focus = sub_focus;
+					}else{
+						res.locals.sub_focus = _.extend(sub_focus, res.locals.sub_focus);
+					}
+			/*		console.log("FOCUS:", res.locals.focus)
+					console.log("SUB FOCUS:", res.locals.sub_focus)*/
+					if(res.locals.focus._njax_type == 'Location' && res.locals.sub_focus && res.locals.sub_focus._njax_type == 'Location') {
+						//console.log("HIDING SUB FOCUS TITLE");
 						res.locals._hide_sub_focus_title = true;
 					}
 					if(res.locals.focus && res.locals.focus.location_friendly_url){
