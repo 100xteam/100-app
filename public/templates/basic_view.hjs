@@ -20,7 +20,7 @@
                             {{focus.name}}
                         </a>
                     </h1>
-                    {{!^ _hide_sub_focus_title }}
+                    {{^ _hide_sub_focus_title }}
                     <div class="pull-left"><!-- visible-sm visible-xs">-->
                         <h3 class="header-sub-name">
                             <a href="//{{ sub_focus.url }}">
@@ -28,7 +28,7 @@
                             </a>
                         </h3>
                     </div>
-                    {{!/ _hide_sub_focus_title}}
+                    {{/ _hide_sub_focus_title}}
 
                 </div>
             </div>

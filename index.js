@@ -54,10 +54,9 @@ module.exports = app100 = {
 					}else{
 						res.locals.sub_focus = _.extend(sub_focus, res.locals.sub_focus);
 					}
-			/*		console.log("FOCUS:", res.locals.focus)
-					console.log("SUB FOCUS:", res.locals.sub_focus)*/
+
 					if(res.locals.focus._njax_type == 'Location' && res.locals.sub_focus && res.locals.sub_focus._njax_type == 'Location') {
-						//console.log("HIDING SUB FOCUS TITLE");
+					//if( res.locals.sub_focus && res.locals.focus.name == res.locals.sub_focus.name) {
 						res.locals._hide_sub_focus_title = true;
 					}
 					if(res.locals.focus && res.locals.focus.location_friendly_url){
