@@ -52,6 +52,7 @@ module.exports = app100 = {
 					if(!res.locals.sub_focus) {
 						res.locals.sub_focus = sub_focus;
 					}else{
+						sub_focus._njax_type = 'Custom';
 						res.locals.sub_focus = _.extend(sub_focus, res.locals.sub_focus);
 					}
 
