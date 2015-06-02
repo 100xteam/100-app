@@ -15,21 +15,20 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <h1 class="header-name pull-left">
-                        <a href="//{{ focus.url }}">
-                            {{focus.name}}
-                        </a>
-                    </h1>
+                    <div class="headers">
                     {{^ _hide_sub_focus_title }}
-                    <div class="pull-left"><!-- visible-sm visible-xs">-->
                         <h3 class="header-sub-name">
                             <a href="//{{ sub_focus.url }}">
                                 {{sub_focus.name}}
                             </a>
                         </h3>
-                    </div>
                     {{/ _hide_sub_focus_title}}
-
+                    <h1 class="header-name">
+                        <a href="//{{ focus.url }}">
+                            {{focus.name}}
+                        </a>
+                    </h1>
+                    </div>
                 </div>
             </div>
 

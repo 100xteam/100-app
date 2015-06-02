@@ -63,7 +63,7 @@ module.exports = app100 = {
 					if(res.locals.focus && res.locals.focus.location_friendly_url){
 						res.locals.focus.url = res.locals.focus.location_friendly_url;
 					}
-					if(res.locals.sub_focus && res.locals.sub_focus.location_friendly_url){
+					if(res.locals.sub_focus._njax_type != 'Custom' && res.locals.sub_focus && res.locals.sub_focus.location_friendly_url){
 						res.locals.sub_focus.url = res.locals.sub_focus.location_friendly_url;
 					}
 					var tab_ct = 0;
