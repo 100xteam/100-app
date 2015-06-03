@@ -8,10 +8,21 @@
             <div class="row">
                 <div class="col-md-3 hidden-sm hidden-xs">
                     <div class="header-avatar">
-                        <img src="{{sub_focus.cropped_img_s3.url}}"  class="img-rounded img-responsive">
+                        {{# sub_focus.location_friendly_url }}
+                            <a href="//{{ sub_focus.location_friendly_url }}">
+                                <img src="{{sub_focus.cropped_img_s3.url}}"  class="img-rounded img-responsive">
+                            </a>
+                        {{/ sub_focus.location_friendly_url }}
+                        {{^ sub_focus.location_friendly_url }}
+                            <a href="//{{ sub_focus.url }}">
+                                <img src="{{sub_focus.cropped_img_s3.url}}"  class="img-rounded img-responsive">
+                            </a>
+                        {{/ sub_focus.location_friendly_url }}
                     </div>
                     <div class="sub-header-avatar">
-                        <img src="{{focus.cropped_img_s3.url}}"  class="img-rounded img-responsive">
+                        <a href="//{{ focus.url }}">
+                            <img src="{{focus.cropped_img_s3.url}}"  class="img-rounded img-responsive">
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-9">
