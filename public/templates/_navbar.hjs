@@ -46,9 +46,9 @@
                                     <img src="{{ default_user_profile.thumb_img_s3.url }}" class="img-responsive img-circle" width="36">
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    {{# user_profile }}
-                                        <li><a href="//{{ user_profile.location_friendly_url }}">My Profile</a></li>
-                                    {{/ user_profile }}
+                                    {{!# user_profile }}
+                                        <li><a href="//{{ default_user_profile.location_friendly_url }}">My Profile</a></li>
+                                    {{!/ user_profile }}
                                     <li><a href="{{ core_www_url }}/settings">Settings</a></li>
                                     <li class="divider"></li>
 
